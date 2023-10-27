@@ -6,14 +6,19 @@ import '@fontsource-variable/nunito'
 import theme from "./theme/theme.jsx";
 import { Provider } from "react-redux";
 import { store } from "./store/store.js";
+import { MetaMaskProvider } from '@metamask/sdk-react';
+
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-      <ChakraProvider theme={theme}>
-        <Provider store={store}>
-          <App />
-        </Provider>
-      </ChakraProvider>
+      
+        <MetaMaskProvider>
+          <ChakraProvider theme={theme}>
+            <Provider store={store}>
+              <App />
+            </Provider>
+          </ChakraProvider>
+        </MetaMaskProvider>
   </React.StrictMode>
 );
 

@@ -23,10 +23,10 @@ import Logo from "../assets/images/absa_logo.png";
 
 const navItems = [
   {
-    title: "Dashboard",
-    path: "/",
-    icon: <Icon as={RxDashboard} color="inherit" />,
-    color: "white",
+    title: "Loans",
+    path: "loans",
+    icon: <FcCalculator />,
+    color: "green.400",
   },
   {
     title: "Loan Documents",
@@ -35,17 +35,16 @@ const navItems = [
     color: "orange.300",
   },
   {
-    title: "Loans",
-    path: "loans",
-    icon: <FcCalculator />,
-    color: "green.400",
-  },
-
-  {
     title: "Vendors",
     path: "vendors",
     icon: <FcCalculator />,
     color: "green.400",
+  },
+  {
+    title: "Dashboard",
+    path: "/",
+    icon: <Icon as={RxDashboard} color="inherit" />,
+    color: "white",
   },
 ];
 
@@ -136,7 +135,7 @@ function SideNav({ isOpen, onClose }) {
           textTransform="uppercase"
           shadow="lg"
         >
-          Logout
+          Connect Wallet
         </Button>
       </Flex>
       <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
@@ -196,7 +195,7 @@ function SideNav({ isOpen, onClose }) {
                 textTransform="uppercase"
                 shadow="lg"
               >
-                Logout
+                Connect Wallet
               </Button>
             </Flex>
           </DrawerBody>

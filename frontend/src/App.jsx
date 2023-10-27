@@ -40,9 +40,9 @@ function App() {
               <RootLayout />
           }
         >
-          <Route index element={ <DashBoard />} />
           <Route exact path="loans" element={<Loans />} />
           <Route exact path="loan-documents" element={<Payment />} />
+          <Route index element={ <DashBoard />} />
           <Route exact path="calendar" element={<Calendar />} />
           <Route exact path="vendors" element={<Vendors />} />
         </Route>
