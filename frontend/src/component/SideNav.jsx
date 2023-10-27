@@ -20,13 +20,14 @@ import { FcCalculator } from "react-icons/fc";
 import { MdOutlinePayment } from "react-icons/md";
 import { logout } from "../config/firebase";
 import Logo from "../assets/images/absa_logo.png";
+import { useMetaMask } from "metamask-react";
 
 const navItems = [
   {
-    title: "Dashboard",
-    path: "/",
-    icon: <Icon as={RxDashboard} color="inherit" />,
-    color: "white",
+    title: "Loans",
+    path: "loans",
+    icon: <FcCalculator />,
+    color: "green.400",
   },
   {
     title: "Loan Documents",
@@ -35,17 +36,16 @@ const navItems = [
     color: "orange.300",
   },
   {
-    title: "Loans",
-    path: "loans",
-    icon: <FcCalculator />,
-    color: "green.400",
-  },
-
-  {
     title: "Vendors",
     path: "vendors",
     icon: <FcCalculator />,
     color: "green.400",
+  },
+  {
+    title: "Dashboard",
+    path: "/",
+    icon: <Icon as={RxDashboard} color="inherit" />,
+    color: "white",
   },
 ];
 
@@ -54,6 +54,7 @@ function SideNav({ isOpen, onClose }) {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
+  
   const handleLogout = async () => {
     try {
       setIsLoading(true);
@@ -77,11 +78,25 @@ function SideNav({ isOpen, onClose }) {
     }
   };
 
+  
+
   const [activeRoute, setActiveRoute] = useState(navItems[0].title);
 
   const handleRouteChange = (tab) => {
     setActiveRoute(tab);
   };
+
+  const { status, connect, account, chainId, ethereum } = useMetaMask();
+
+    if (status === "initializing") return <div>Synchronisation with MetaMask ongoing...</div>
+
+    if (status === "unavailable") return <div>MetaMask not available :(</div>
+
+    if (status === "notConnected") return <button onClick={connect}>Connect to MetaMask</button>
+
+    if (status === "connecting") return <div>Connecting...</div>
+
+    if (status === "connected")
 
   return (
     <>
@@ -135,8 +150,9 @@ function SideNav({ isOpen, onClose }) {
           rounded="lg"
           textTransform="uppercase"
           shadow="lg"
+          onClick={connect}
         >
-          Logout
+          Connect Wallet
         </Button>
       </Flex>
       <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
@@ -196,7 +212,7 @@ function SideNav({ isOpen, onClose }) {
                 textTransform="uppercase"
                 shadow="lg"
               >
-                Logout
+                Connect Wallet
               </Button>
             </Flex>
           </DrawerBody>

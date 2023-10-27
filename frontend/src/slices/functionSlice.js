@@ -83,16 +83,22 @@ const functionSlice = createSlice({
     calculateTotalLoan: (state) => {
       state.budget.forEach((budget) => {
         const principal = parseFloat(budget.loanAmount);
-        const rate = parseFloat(budget.loanRate) / 100 / 12;
+        const rate = 0.05;
         budget.totalLoan = principal + principal * rate;
         // console.log(`Calculating total loan for budget ${budget.totalLoan}`);
       });
     },
     calculatePaymentEstimate: (state) => {
       state.budget.forEach((budget) => {
-        if (budget.paymentFrequency === "Weekly") {
-          budget.paymentEstimate = (budget.totalLoan / 52).toFixed(2);
-        } else {
+        if (budget.paymentFrequency === "1 month") {
+          budget.paymentEstimate = (budget.totalLoan / 1).toFixed(2);
+        } else if (budget.paymentFrequency === "3 months") {
+          budget.paymentEstimate = (budget.totalLoan / 3).toFixed(2);
+        }
+         else if (budget.paymentFrequency === "6 months") {
+          budget.paymentEstimate = (budget.totalLoan / 6).toFixed(2);
+        }
+         else {
           budget.paymentEstimate = (budget.totalLoan / 12).toFixed(2);
         }
         // console.log(`Calculating payment estimate for budget ${budget.paymentEstimate}`);

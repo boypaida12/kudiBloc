@@ -168,7 +168,7 @@ const DashBoard = () => {
             </Text>
             <Divider my={2} />
             <Text fontSize="sm" color="gray.500">
-              Lorem ipsum dolor sit amet.
+              Track your loan repayments in the past week
             </Text>
           </GridItem>
           <GridItem bg="white" p={3} rounded="lg" shadow="md">
@@ -178,7 +178,7 @@ const DashBoard = () => {
             </Text>
             <Divider my={2} />
             <Text fontSize="sm" color="gray.500">
-              Repudiandae, illum amet.
+              Track your loan repayments in the past month
             </Text>
           </GridItem>
           <GridItem bg="white" p={3} rounded="lg" shadow="md">
@@ -188,10 +188,57 @@ const DashBoard = () => {
             </Text>
             <Divider my={2} />
             <Text fontSize="sm" color="gray.500">
-              Consequuntur at omnis sit sunt.
+              Track your loan repayments in the past year
             </Text>
           </GridItem>
         </Grid>
+
+        <Box bg="white" rounded="lg" p={3} shadow="md" my={10}>
+  <Text fontSize="sm" color="gray.500" fontWeight="bold">
+    <h2>Learn about which documents you need for your loan application</h2>
+  </Text>
+  <Divider my={2} />
+  <Grid
+    templateColumns="repeat(3, 1fr)"
+    gap={5}
+  >
+    <GridItem>
+      <iframe
+        title="YouTube Video 1"
+        width="100%"
+        height="200"
+        src="https://www.youtube.com/embed/LgsRUaVFza0"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      ></iframe>
+    </GridItem>
+    <GridItem>
+      <iframe
+        title="YouTube Video 2"
+        width="100%"
+        height="200"
+        src="https://www.youtube.com/embed/ebtJHaNmsXE"
+        
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      ></iframe>
+    </GridItem>
+    <GridItem>
+      <iframe
+        title="YouTube Video 3"
+        width="100%"
+        height="200"
+        src="https://www.youtube.com/embed/yy8eiag5JXg"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      ></iframe>
+    </GridItem>
+  </Grid>
+</Box>
+
       </Box>
     </>
   );

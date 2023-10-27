@@ -212,17 +212,7 @@ function LoanCard({ onEditBudget, searchQuery }) {
                       </Text>
                       <Text ms="auto">GHS</Text>
                     </Flex>
-                    <Divider my={1} />
-                    <Text fontSize={"sm"}>Interest Rate Per Year</Text>
-                    <Flex gap={5} align="center" fontSize="lg" lineHeight={8}>
-                      <Text
-                        bgGradient="linear(to-r,red.700,red.500,red.200)"
-                        bgClip="text"
-                      >
-                        {loan.loanRate}
-                      </Text>
-                      <Text ms="auto">%</Text>
-                    </Flex>
+                    <Divider my={1} />      
                     <Divider my={1} />
                     <Flex>
                       <Icon
@@ -471,19 +461,21 @@ const Loans = () => {
 
       <Flex h="70vh" flexDir="column">
         <LoanCard onEditBudget={handleEditBudget} />
-        <Icon
-          as={BsPlusLg}
+        <Text
           onClick={onOpen}
-          fontSize="5xl"
+          fontSize="xl"
           rounded="full"
           borderColor="#F8F8F8"
           color="#FDFDFD"
-          bgGradient="linear(to-l,red.700,red.500,red.200)"
+          bg="red.700"
           cursor="pointer"
           shadow="lg"
+          p={2}
+          px={4}
           ms="auto"
           mt="auto"
-        />
+          >Apply
+            </Text>
       </Flex>
 
       <Modal isOpen={isOpen} onClose={onClose} size="2xl">
