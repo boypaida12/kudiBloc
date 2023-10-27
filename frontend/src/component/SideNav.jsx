@@ -30,13 +30,20 @@ const navItems = [
   },
   {
     title: "Loan Documents",
-    path: "payment",
+    path: "loan-documents",
     icon: <Icon as={MdOutlinePayment} color="orange.300" />,
     color: "orange.300",
   },
   {
     title: "Loans",
     path: "loans",
+    icon: <FcCalculator />,
+    color: "green.400",
+  },
+
+  {
+    title: "Vendors",
+    path: "vendors",
     icon: <FcCalculator />,
     color: "green.400",
   },

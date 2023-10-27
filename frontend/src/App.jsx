@@ -19,6 +19,7 @@ import SignUpForm from "./pages/signup/SignUpForm";
 import { useAuth } from "./config/firebase";
 import ErrorPage from "./pages/ErrorPage";
 import LoadingIndicator from "./component/LoadingIndicator";
+import Vendors from "./pages/Vendors";
 
 function App() {
   //get user from firebase config
@@ -41,9 +42,9 @@ function App() {
         >
           <Route index element={ <DashBoard />} />
           <Route exact path="loans" element={<Loans />} />
-          <Route exact path="payment" element={<Payment />} />
+          <Route exact path="loan-documents" element={<Payment />} />
           <Route exact path="calendar" element={<Calendar />} />
-          <Route exact path="creditScore" element={<CreditScore />} />
+          <Route exact path="vendors" element={<Vendors />} />
         </Route>
         <Route path="*" element={<ErrorPage />} />
       </>
