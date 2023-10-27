@@ -1,120 +1,123 @@
-/* eslint-disable no-unused-vars */
+import React, { useState } from "react";
 import {
   Box,
   Button,
-  Divider,
-  Flex,
   FormControl,
   FormLabel,
   Heading,
-  Icon,
-  IconButton,
   Input,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalHeader,
-  ModalOverlay,
-  Table,
-  TableContainer,
-  Tbody,
-  Td,
-  Text,
-  Th,
-  Thead,
-  Tr,
-  useDisclosure,
-  useToast,
+  useToast, // Import useToast
 } from "@chakra-ui/react";
-import React, { useState } from "react";
-import { PiDotsThreeVerticalBold } from "react-icons/pi";
-import { TbCurrencyCent } from "react-icons/tb";
-import { AiOutlineEye, AiOutlinePrinter } from "react-icons/ai";
-import { useDispatch, useSelector } from "react-redux";
-import { Link as ReactRouterLink } from "react-router-dom";
-import { Link as ChakraLink } from "@chakra-ui/react";
-import { CircularProgressBar } from "@tomickigrzegorz/react-circular-progress-bar";
-import { PaystackButton } from "react-paystack";
-import {
-  updatePaymentPercentage,
-  updateAllpayments,
-} from "../slices/functionSlice";
 
 const Payment = () => {
-  const state = useSelector((state) => state.loanReducer.budget);
-  const paymentDataIsEmpty = state.length === 0;
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [documentFiles, setDocumentFiles] = useState({
+    invoices: [],
+    paymentReceipt: null,
+    bankStatements: null,
+    contract: null,
+  });
 
-  const [modalOpen, setModalOpen] = useState(Array(state.length).fill(false));
+  const toast = useToast(); // Initialize useToast
 
-  const [paymentFormModalOpen, setPaymentFormModalOpen] = useState(
-    Array(state.length).fill(false)
-  );
-
-  const tableHeadings = [
-    "Loan ID",
-    "Due Date",
-    "Category",
-    "Principal Amount",
-    "Loan Amount",
-    "Status",
-    "Action",
-  ];
-
-  // Function to handle opening the payment form modal
-  const handleOpenPaymentFormModal = (index) => {
-    const updatedPaymentFormModalOpen = [...paymentFormModalOpen];
-    updatedPaymentFormModalOpen[index] = true;
-    setPaymentFormModalOpen(updatedPaymentFormModalOpen);
+  const handleFileChange = (e, documentType) => {
+    const files = e.target.files;
+    if (documentType === "invoices" && files.length < 3) {
+      alert("Please upload a minimum of 3 invoices.");
+      return;
+    }
+    setDocumentFiles({
+      ...documentFiles,
+      [documentType]: [...documentFiles[documentType], ...files],
+    });
   };
 
-  // Function to handle closing the payment form modal
-  const handleClosePaymentFormModal = (index) => {
-    const updatedPaymentFormModalOpen = [...paymentFormModalOpen];
-    updatedPaymentFormModalOpen[index] = false;
-    setPaymentFormModalOpen(updatedPaymentFormModalOpen);
-  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Display "Your documents are being analyzed" toast
+    const analyzingToastId = toast({
+      title: "Your documents are being analyzed",
+      status: "info",
+      duration: 5000, // Display for 5 seconds
+    });
 
-  const publicKey = "pk_test_81a7c512f5cd94cff72aa9d7ea21732bc14c07b3";
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
+    setTimeout(() => {
+      // After a short delay, display "Your loan was approved" toast
+      toast.close(analyzingToastId); // Close the analyzing toast
+      toast({
+        title: "Your loan was approved",
+        status: "success",
+      });
 
-  const toast = useToast();
-  const dispatch = useDispatch();
-
-  const componentProps = {
-    email,
-    currency: "GHS",
-    metadata: {
-      name,
-    },
-    publicKey,
-    text: "Pay Now",
-    onClose: () => alert("Wait! Don't leave :("),
+      // Send the documentFiles object to your backend for processing.
+      console.log("Uploaded files:", documentFiles);
+    }, 5000); // Delay for 5 seconds
   };
 
   return (
-    <>
-      <Flex flexDir="column" mt="6" align="center">
-        <Heading
-          textTransform="uppercase"
-          fontSize="2xl"
-          m="0 auto"
-          bgGradient="linear(to-r,red.700,red.500,red.200)"
-          bgClip="text"
-        >
-          Upload Required Loan Documents
-        </Heading>
-      </Flex>
+    <Box p={5} bg="#F4F4F4" m={4}>
+      <Heading
+        textTransform="uppercase"
+        fontSize="2xl"
+        bgGradient="linear(to-r, #EA0036, #F45022)"
+        bgClip="text"
+        mt={6}
+        textAlign="center"
+      >
+        Upload Required Loan Documents
+      </Heading>
       <Box my={5}>
-        
+        <form onSubmit={handleSubmit}>
+          <FormControl mb={4}>
+            <FormLabel>Upload Invoices (Minimum of 3)</FormLabel>
+            <Input
+              type="file"
+              accept=".pdf, .jpg, .docx, .png"
+              multiple
+              required
+              onChange={(e) => handleFileChange(e, "invoices")}
+              p={2} // Add padding to the input
+            />
+          </FormControl>
+          <FormControl mb={4}>
+            <FormLabel>Upload Payment Receipt</FormLabel>
+            <Input
+              type="file"
+              required
+              accept=".pdf, .jpg, .png"
+              onChange={(e) => handleFileChange(e, "paymentReceipt")}
+              p={2} // Add padding to the input
+            />
+          </FormControl>
+          <FormControl mb={4}>
+            <FormLabel>Upload Bank Statements</FormLabel>
+            <Input
+              type="file"
+              required
+              accept=".pdf, .jpg, .png"
+              onChange={(e) => handleFileChange(e, "bankStatements")}
+              p={2} // Add padding to the input
+            />
+          </FormControl>
+          <FormControl mb={4}>
+            <FormLabel>Upload Contract</FormLabel>
+            <Input
+              type="file"
+              required
+              accept=".pdf, .jpg, .png"
+              onChange={(e) => handleFileChange(e, "contract")}
+              p={2} // Add padding to the input
+            />
+          </FormControl>
+          <Button
+            mt={4}
+            colorScheme="red" // Use the red color scheme
+            type="submit"
+          >
+            Submit
+          </Button>
+        </form>
       </Box>
-    </>
+    </Box>
   );
 };
 
