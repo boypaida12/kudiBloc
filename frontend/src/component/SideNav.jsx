@@ -40,12 +40,12 @@ const navItems = [
     icon: <Icon as={RxDashboard} color="inherit" />,
     color: "white",
   },
-  {
-    title: "Vendors",
-    path: "vendors",
-    icon: <FcCalculator />,
-    color: "green.400",
-  },
+  // {
+  //   title: "Vendors",
+  //   path: "vendors",
+  //   icon: <FcCalculator />,
+  //   color: "green.400",
+  // },
 ];
 
 function SideNav({ isOpen, onClose }) {
