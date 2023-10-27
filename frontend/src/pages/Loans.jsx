@@ -183,7 +183,7 @@ function LoanCard({ onEditBudget, searchQuery }) {
                     </Text>
                     <Flex gap={5} align="center" fontSize="lg" lineHeight={8}>
                       <Text
-                        bgGradient="linear(to-r,cyan.700,cyan.500,teal.300)"
+                        bgGradient="linear(to-r,to-r,red.700,red.500,red.200)"
                         bgClip="text"
                       >
                         {loan.paymentEstimate}
@@ -194,7 +194,7 @@ function LoanCard({ onEditBudget, searchQuery }) {
                     <Text fontSize={"sm"}>Total Loan</Text>
                     <Flex gap={5} align="center" fontSize="lg" lineHeight={8}>
                       <Text
-                        bgGradient="linear(to-r,cyan.700,cyan.500,teal.300)"
+                        bgGradient="linear(to-r,red.700,red.500,red.200)"
                         bgClip="text"
                       >
                         {parseFloat(loan.totalLoan).toFixed(2)}
@@ -205,7 +205,7 @@ function LoanCard({ onEditBudget, searchQuery }) {
                     <Text fontSize={"sm"}>Principal Loan</Text>
                     <Flex gap={5} align="center" fontSize="lg" lineHeight={8}>
                       <Text
-                        bgGradient="linear(to-r,cyan.700,cyan.500,teal.300)"
+                        bgGradient="linear(to-r,red.700,red.500,red.200)"
                         bgClip="text"
                       >
                         {parseFloat(loan.loanAmount).toFixed(2)}
@@ -216,7 +216,7 @@ function LoanCard({ onEditBudget, searchQuery }) {
                     <Text fontSize={"sm"}>Interest Rate Per Year</Text>
                     <Flex gap={5} align="center" fontSize="lg" lineHeight={8}>
                       <Text
-                        bgGradient="linear(to-r,cyan.700,cyan.500,teal.300)"
+                        bgGradient="linear(to-r,red.700,red.500,red.200)"
                         bgClip="text"
                       >
                         {loan.loanRate}
@@ -228,7 +228,7 @@ function LoanCard({ onEditBudget, searchQuery }) {
                       <Icon
                         as={FiEdit3}
                         color="#FDFDFD"
-                        bgGradient="linear(to-l,teal.100,teal.200,teal.300)"
+                        bgGradient="linear(to-r,red.700,red.500,red.200)"
                         fontSize="6xl"
                         rounded="full"
                         p={1}
@@ -377,7 +377,7 @@ function ModalForm({
       <HStack mt={4}>
         <Button
           variant="solid"
-          bgGradient="linear(to-r,teal.400,teal.300,teal.200)"
+          bgGradient="linear(to-r,red.700,red.500,red.200)"
           transition={"all 1500ms"}
           color="gray.50"
           type="submit"

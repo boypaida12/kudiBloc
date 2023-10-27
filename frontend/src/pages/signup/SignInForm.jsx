@@ -70,7 +70,7 @@ function SignInForm() {
         <form onSubmit={handleSubmit} className="formStyle">
           <Center>
             <Heading size="lg" mb={5} bgGradient="linear(to-r,cyan.700,cyan.500,teal.300)" bgClip="text">
-              Credit Care
+              KudiBloc
             </Heading>
             {error && (
               <Text color="red.400" fontWeight="semibold">
