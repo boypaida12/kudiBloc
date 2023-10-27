@@ -20,7 +20,6 @@ import { FcCalculator } from "react-icons/fc";
 import { MdOutlinePayment } from "react-icons/md";
 import { logout } from "../config/firebase";
 import Logo from "../assets/images/absa_logo.png";
-import { useMetaMask } from "metamask-react";
 
 const navItems = [
   {
@@ -54,7 +53,6 @@ function SideNav({ isOpen, onClose }) {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
-  
   const handleLogout = async () => {
     try {
       setIsLoading(true);
@@ -78,25 +76,11 @@ function SideNav({ isOpen, onClose }) {
     }
   };
 
-  
-
   const [activeRoute, setActiveRoute] = useState(navItems[0].title);
 
   const handleRouteChange = (tab) => {
     setActiveRoute(tab);
   };
-
-  const { status, connect, account, chainId, ethereum } = useMetaMask();
-
-    if (status === "initializing") return <div>Synchronisation with MetaMask ongoing...</div>
-
-    if (status === "unavailable") return <div>MetaMask not available :(</div>
-
-    if (status === "notConnected") return <button onClick={connect}>Connect to MetaMask</button>
-
-    if (status === "connecting") return <div>Connecting...</div>
-
-    if (status === "connected")
 
   return (
     <>
@@ -150,7 +134,6 @@ function SideNav({ isOpen, onClose }) {
           rounded="lg"
           textTransform="uppercase"
           shadow="lg"
-          onClick={connect}
         >
           Connect Wallet
         </Button>
