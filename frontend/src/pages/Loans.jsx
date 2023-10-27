@@ -348,7 +348,7 @@ function ModalForm({
           />
         </FormControl>
         <FormControl id="pFrequency">
-          <FormLabel>Repayment Terms:</FormLabel>
+          <FormLabel>Repayment Term:</FormLabel>
           <Select
             value={budgetData.paymentFrequency}
             onChange={handleChange}
@@ -365,7 +365,7 @@ function ModalForm({
       </HStack>
       <HStack mt={4} gap={5}>
         <FormControl id="startDate">
-          <FormLabel>Start Date:</FormLabel>
+          <FormLabel>Effective Date:</FormLabel>
           <Input
             type="date"
             value={budgetData.startDate}

@@ -36,27 +36,16 @@ function App() {
         <Route
           path="/"
           element={
-            isAuthenticated ? (
-              <RootLayout isAuthenticated={isAuthenticated} />
-            ) : isLoggedOut ? (
-              <Navigate to="/signin" /> // Redirect to login when logged out
-            ) : (
-              <LoadingIndicator />
-            )
+              <RootLayout />
           }
         >
-          <Route index element={isAuthenticated ? <DashBoard /> : null} />
+          <Route index element={ <DashBoard />} />
           <Route exact path="loans" element={<Loans />} />
           <Route exact path="payment" element={<Payment />} />
           <Route exact path="calendar" element={<Calendar />} />
           <Route exact path="creditScore" element={<CreditScore />} />
         </Route>
         <Route path="*" element={<ErrorPage />} />
-        <Route
-          path="signin"
-          element={isAuthenticated ? <Navigate to="/" /> : <SignInForm />}
-        />
-        <Route exact path="signup" element={<SignUpForm />} />
       </>
     )
   );

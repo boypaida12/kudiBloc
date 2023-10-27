@@ -25,11 +25,11 @@ const navItems = [
   {
     title: "Dashboard",
     path: "/",
-    icon: <Icon as={RxDashboard} color="blue.500" />,
-    color: "blue.500",
+    icon: <Icon as={RxDashboard} color="inherit" />,
+    color: "white",
   },
   {
-    title: "Payments",
+    title: "Loan Documents",
     path: "payment",
     icon: <Icon as={MdOutlinePayment} color="orange.300" />,
     color: "orange.300",
@@ -85,6 +85,7 @@ function SideNav({ isOpen, onClose }) {
         shadow="md"
         flexDir="column"
         mx={5}
+        px={4}
         minH="95vh"
         w="16.5%"
         gap={3}
@@ -100,7 +101,7 @@ function SideNav({ isOpen, onClose }) {
             to={navItem.path}
             onClick={() => handleRouteChange(navItem.title)}
             textTransform="uppercase"
-            bg={activeRoute === navItem.title ? "gray.200" : "transparent"}
+            bg={activeRoute === navItem.title ? "red.700" : "transparent"}
             shadow={activeRoute === navItem.title ? "lg" : "none"}
             color={activeRoute === navItem.title ? navItem.color : "gray.600"}
             fontWeight={activeRoute === navItem.title ? "bold" : "semibold"}
@@ -116,13 +117,12 @@ function SideNav({ isOpen, onClose }) {
         ))}
         <Button
           variant="solid"
-          bgGradient="linear(to-l,teal.400,teal.300,teal.200)"
+          bg="red.700"
           transition={"all 1000ms"}
           color="#FDFDFD"
           type="submit"
-          onClick={handleLogout}
           isLoading={isLoading}
-          _hover={{ bg: "teal.400" }}
+          _hover={{ bg: "red.500" }}
           mt="auto"
           fontWeight="bold"
           rounded="lg"
@@ -181,7 +181,6 @@ function SideNav({ isOpen, onClose }) {
                 transition={"all 1000ms"}
                 color="#FDFDFD"
                 type="submit"
-                onClick={handleLogout}
                 isLoading={isLoading}
                 _hover={{ bg: "teal.400" }}
                 mt="auto"

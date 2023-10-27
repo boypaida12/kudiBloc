@@ -34,7 +34,7 @@ function SearchBar() {
   };
 
   return (
-    <InputGroup w={{lg:"25rem"}}>
+    <InputGroup w={{ lg: "25rem" }}>
       <InputRightElement pointerEvents="none">
         <AiOutlineSearch />
       </InputRightElement>
@@ -66,16 +66,20 @@ const Navigation = ({ onOpen }) => {
   return (
     <>
       <HStack>
-      <Button
-            bg="transparent"
-            onClick={onOpen}
-            display={{base: "flex", xl: "none"}}
-          >
-            <Icon as={HiMenuAlt3} fontSize="2rem" color="blue.400" />
-          </Button>
-          <Text fontSize="xs" fontWeight="bold" display={{base: "none", lg: "flex"}}>
-            {greetText} {date}
-          </Text>
+        <Button
+          bg="transparent"
+          onClick={onOpen}
+          display={{ base: "flex", xl: "none" }}
+        >
+          <Icon as={HiMenuAlt3} fontSize="2rem" color="blue.400" />
+        </Button>
+        <Text
+          fontSize="xs"
+          fontWeight="bold"
+          display={{ base: "none", lg: "flex" }}
+        >
+          {greetText} {date}
+        </Text>
         <Flex ms="auto" gap={5}>
           <SearchBar />
           <ChakraLink as={RouterLink} to="#">
@@ -90,16 +94,16 @@ const Navigation = ({ onOpen }) => {
   );
 };
 
-function RootLayout({ isAuthenticated }) {
+function RootLayout() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
       <Flex py={2} ps={4}>
-        {isAuthenticated && <SideNav isOpen={isOpen} onClose={onClose} />}
-        <Box w={{ base: "full", xl:"80%"}} ms="auto" pe={5}>
+        <SideNav isOpen={isOpen} onClose={onClose} />
+        <Box w={{ base: "full", xl: "80%" }} ms="auto" pe={5}>
           <Navigation onOpen={onOpen} />
-          {isAuthenticated && <Outlet />}
+          <Outlet />
         </Box>
       </Flex>
     </>
