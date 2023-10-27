@@ -181,15 +181,12 @@ function LoanCard({ onEditBudget, searchQuery }) {
                     <Text fontSize={"sm"} textTransform="capitalize">
                       Estimated {loan.paymentFrequency} Payment
                     </Text>
-                    <Flex gap={5} align="center" fontSize="lg" lineHeight={8}>
-                      <Text
-                        bgGradient="linear(to-r,to-r,red.700,red.500,red.200)"
+                    <Text
+                        bgGradient="linear(to-r,red.700,red.500,red.200)"
                         bgClip="text"
                       >
-                        {loan.paymentEstimate}
+                        {parseFloat(loan.totalLoan/3).toFixed(2)}
                       </Text>
-                      <Text ms="auto">GHS</Text>
-                    </Flex>
                     <Divider my={1} />
                     <Text fontSize={"sm"}>Total Loan</Text>
                     <Flex gap={5} align="center" fontSize="lg" lineHeight={8}>

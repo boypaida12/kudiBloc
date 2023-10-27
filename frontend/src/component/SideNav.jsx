@@ -35,16 +35,16 @@ const navItems = [
     color: "orange.300",
   },
   {
-    title: "Vendors",
-    path: "vendors",
-    icon: <FcCalculator />,
-    color: "green.400",
-  },
-  {
     title: "Dashboard",
     path: "/",
     icon: <Icon as={RxDashboard} color="inherit" />,
     color: "white",
+  },
+  {
+    title: "Vendors",
+    path: "vendors",
+    icon: <FcCalculator />,
+    color: "green.400",
   },
 ];
 
@@ -135,7 +135,7 @@ function SideNav({ isOpen, onClose }) {
           textTransform="uppercase"
           shadow="lg"
         >
-          Connect Wallet
+          Wallet Connected
         </Button>
       </Flex>
       <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
@@ -183,19 +183,19 @@ function SideNav({ isOpen, onClose }) {
               ))}
               <Button
                 variant="solid"
-                bgGradient="linear(to-l,teal.400,teal.300,teal.200)"
+                bg="red.700"
                 transition={"all 1000ms"}
                 color="#FDFDFD"
                 type="submit"
                 isLoading={isLoading}
-                _hover={{ bg: "teal.400" }}
+                _hover={{ bg: "red.500" }}
                 mt="auto"
                 fontWeight="bold"
                 rounded="lg"
                 textTransform="uppercase"
                 shadow="lg"
               >
-                Connect Wallet
+                Wallet Connected
               </Button>
             </Flex>
           </DrawerBody>

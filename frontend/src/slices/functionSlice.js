@@ -91,12 +91,12 @@ const functionSlice = createSlice({
     calculatePaymentEstimate: (state) => {
       state.budget.forEach((budget) => {
         if (budget.paymentFrequency === "1 month") {
-          budget.paymentEstimate = (budget.totalLoan / 1).toFixed(2);
+          budget.paymentEstimate = (50000 / 1).toFixed(2);
         } else if (budget.paymentFrequency === "3 months") {
-          budget.paymentEstimate = (budget.totalLoan / 3).toFixed(2);
+          budget.paymentEstimate = (50000 / 3).toFixed(2);
         }
          else if (budget.paymentFrequency === "6 months") {
-          budget.paymentEstimate = (budget.totalLoan / 6).toFixed(2);
+          budget.paymentEstimate = (50000 / 6).toFixed(2);
         }
          else {
           budget.paymentEstimate = (budget.totalLoan / 12).toFixed(2);
