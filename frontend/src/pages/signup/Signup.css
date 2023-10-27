@@ -1,0 +1,91 @@
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+.backgroundStyle {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
+
+.backgroundStyle::after {
+  content:"";
+  position: absolute;
+  top: 0;
+  z-index: -2;
+  background-image: url("../../assets/images/moneyplant.jpg");
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  filter: brightness(0.75);
+}
+
+.backgroundStyle::before {
+  content:"";
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(90, 90, 90, 0.201);
+  backdrop-filter: blur(5px);
+}
+
+.formContainerStyle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formStyle {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    max-width: 400px;
+    width: 100%;
+    height: 100%;
+    box-shadow: 2px 0px 10px rgba(2, 119, 88, 0.969);
+}
+
+
+.signup_link {
+    background: #62816adc;
+    width: 100%;
+    line-height: 35px;
+   margin: 20px 9px;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    
+}
+
+
+.sr-only {
+    position: absolute;
+    /*width: 1px;
+      margin: -1px;*/
+    height: 1px;
+    padding: 0;
+  
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+
+  
+
+
+
+
